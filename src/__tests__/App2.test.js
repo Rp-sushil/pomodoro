@@ -30,7 +30,7 @@ test('should be able to stop clock', async () =>{
     act(() => {render(<App />)});
     act(() => {
         fireEvent.click(screen.getByTestId(datatestid.start));
-        clock.tick(1000);
+        clock.tick(1001);
         fireEvent.click(screen.getByTestId(datatestid.stop));
         clock.tick(1000);
     })

@@ -56,13 +56,19 @@ test('Both Work-duration and break-duration could not be set to zero at the same
     act(() =>{
         fireEvent.change(inputElements[0], {target: {value: '0'}});
         fireEvent.change(inputElements[1], {target: {value: '0'}});
-        fireEvent.click(screen.getByTestId(datatestid.set));
+    })
+    await waitFor(() =>{
+      expect(parseInt(inputElements[0].value) === 0).toBe(true);
+        expect(parseInt(inputElements[1].value) === 0).toBe(true);
+    })
+    act(() =>{
+      fireEvent.click(screen.getByTestId(datatestid.set));
     })
     await waitFor(() =>{
         expect(screen.getByText(/25/i)).toBeInTheDocument();
-        //inputElements = document.getElementsByTagName('INPUT');
-        //expect(parseInt(inputElements[0].value) === 25 || parseInt(inputElements[0].value) === 5).toBe(true);
-        //expect(parseInt(inputElements[1].value) === 25 || parseInt(inputElements[1].value) === 5).toBe(true);
+        inputElements = document.getElementsByTagName('INPUT');
+        expect(parseInt(inputElements[0].value) === 25).toBe(true);
+        expect(parseInt(inputElements[1].value) === 5).toBe(true);
     })
 })
 

@@ -52,7 +52,11 @@ function App() {
     return m + ":" + s;
   }
   const validateData = (data) =>{
-    return parseInt(data);
+    if(!isNaN(data) && parseInt(data) >= 0){
+      return parseInt(data);
+    }
+    else
+      return '';
   }
   const setDuration = (e) =>{
     e.preventDefault();
